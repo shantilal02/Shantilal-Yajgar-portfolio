@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shantilal Yajgar | Python Developer & Data Science Portfolio</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --python-yellow: #facc15;
+            --border: #334155;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        /* Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .logo span {
+            color: var(--python-yellow);
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 5% 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(250, 204, 21, 0.15);
+            color: var(--python-yellow);
+            border: 1px solid rgba(250, 204, 21, 0.4);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .hero h2 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        .hero p {
+            max-width: 720px;
+            margin: 0 auto 2rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #0f172a;
+        }
+        .btn-outline {
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--python-yellow);
+            padding-left: 1rem;
+        }
+
+        /* Grid & Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.6rem;
+            transition: border-color 0.2s;
+        }
+        .card:hover {
+            border-color: var(--accent);
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--python-yellow);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .card p, .card li {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .card ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        .card li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Skills Tags */
+        .skill-highlight {
+            border: 1px solid var(--python-yellow);
+            background: linear-gradient(145deg, #1e293b, #262f40);
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+        .tag {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent);
+            padding: 0.35rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .tag-python {
+            background: rgba(250, 204, 21, 0.2);
+            color: var(--python-yellow);
+            font-weight: 700;
+        }
+
+        /* Contact & Footer */
+        .contact-box {
+            text-align: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 3rem 1.5rem;
+        }
+        .contact-box p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 5%;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">Shantilal Yajgar</a>
+        <ul class="nav-links">
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="badge">🐍 Python Specialist | Software Development & Data Science</div>
+        <h1>Shantilal Sunil Yajgar</h1>
+        <h2>Python Developer • Django Web Apps • Data Analysis</h2>
+        <p>
+            Fresher BCS graduate from Akluj, Maharashtra, specializing in Python, Django, and Data Science. 
+            Hands-on experience in building full-stack web applications, data visualizations, and automated Python scripts with clean, efficient code.
+        </p>
+        <div class="cta-buttons">
+            <a href="#projects" class="btn btn-primary">View My Projects</a>
+            <a href="mailto:shantilalyajgar@gmail.com" class="btn btn-outline">Hire Me / Email</a>
+        </div>
+    </header>
+
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="grid">
+            <div class="card skill-highlight">
+                <h3>Core Expertise: Python & Backend</h3>
+                <p>Primary programming language with strong command over web frameworks, OOP, scripting, and APIs.</p>
+                <div class="tags">
+                    <span class="tag tag-python">Python (Primary)</span>
+                    <span class="tag">Django</span>
+                    <span class="tag">OOP</span>
+                    <span class="tag">File I/O & APIs</span>
+                    <span class="tag">SQLite</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">SQL</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Data Science & Analytics</h3>
+                <p>Transforming raw datasets into actionable insights using statistical methods and visual dashboards.</p>
+                <div class="tags">
+                    <span class="tag">Pandas</span>
+                    <span class="tag">NumPy</span>
+                    <span class="tag">Matplotlib</span>
+                    <span class="tag">Seaborn</span>
+                    <span class="tag">Data Analysis</span>
+                    <span class="tag">ML Fundamentals</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Web Frontend, Tools & Soft Skills</h3>
+                <p>Building responsive interfaces and managing codebases efficiently.</p>
+                <div class="tags">
+                    <span class="tag">HTML & CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Bootstrap</span>
+                    <span class="tag">Git & GitHub</span>
+                    <span class="tag">VS Code</span>
+                    <span class="tag">Jupyter Notebook</span>
+                    <span class="tag">Problem Solving</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>College Management System</h3>
+                <div class="card-meta">March 2026 | Python • Django • SQLite • HTML/CSS • Bootstrap</div>
+                <ul>
+                    <li>Built a full-stack web app managing student enrollment, attendance, result management, and staff administration with role-based access (Admin, Staff, Student).</li>
+                    <li>Implemented secure email-based authentication, Firebase push notifications, leave management, and real-time attendance & result reporting.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Data Analysis & Visualization</h3>
+                <div class="card-meta">November 2025 | Python • Pandas • NumPy • Matplotlib • Seaborn</div>
+                <ul>
+                    <li>Performed Exploratory Data Analysis (EDA) on real-world datasets using Jupyter Notebook.</li>
+                    <li>Built heatmaps, charts, and trend dashboards using statistical methods and data cleaning techniques for insight generation.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Python Scripting & Automation</h3>
+                <div class="card-meta">March 2026 | Python • OOP • File I/O • APIs</div>
+                <ul>
+                    <li>Developed Python mini-projects covering Object-Oriented Programming (OOP), file handling, exception management, and API integration.</li>
+                    <li>Built practical scripts as part of structured Python bootcamp training.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="section-title">Education & Achievements</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Bachelor of Computer Science (BCS)</h3>
+                <div class="card-meta">2023 – 2026</div>
+                <p><strong>Greenfinger College of Computer and Technology</strong><br>Akluj, Maharashtra</p>
+            </div>
+
+            <div class="card">
+                <h3>Achievements & Extra-Curricular</h3>
+                <ul>
+                    <li>Earned two industry-recognized certifications in Python and Data Science from CodeWithHarry.</li>
+                    <li>Built and deployed a complete College Management System as a final-year academic project.</li>
+                    <li>Active participant in college technical events and online coding communities on GitHub.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2 class="section-title">Certifications</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Complete 2026 Python Bootcamp</h3>
+                <div class="card-meta">CodeWithHarry | March 2026</div>
+                <p>Learn Python from Scratch — covering core Python, OOP, scripting, and project development.</p>
+            </div>
+
+            <div class="card">
+                <h3>The Ultimate Job Ready Data Science Course</h3>
+                <div class="card-meta">CodeWithHarry | November 2025</div>
+                <p>Hands-on training in data cleaning, EDA, visualization, and machine learning fundamentals.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-box">
+            <h2 style="margin-bottom: 0.8rem;">Let's Work Together</h2>
+            <p>Available for Freelance Python Development, Django Web Apps, Data Analysis, and IT projects.<br>Location: Akluj, Maharashtra</p>
+            <div class="cta-buttons">
+                <a href="mailto:shantilalyajgar@gmail.com" class="btn btn-primary">shantilalyajgar@gmail.com</a>
+                <a href="https://linkedin.com/in/shantilal-yajgar-37065936a" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Shantilal Sunil Yajgar </p>
+    </footer>
+
+</body>
+</html>
